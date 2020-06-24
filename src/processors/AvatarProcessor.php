@@ -10,6 +10,6 @@ class AvatarProcessor {
             }
             return null;
         }
-        return url('umrah/'.$image);
+        return url('storage/umrah/'.$image);
     }
 }
