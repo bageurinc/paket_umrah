@@ -67,6 +67,6 @@ class TglProcessor {
         $now = Carbon::parse($fdate);
         $end = Carbon::parse($tdate);
         $length = $end->diffInDays($now);
-        return $length;
+        return $length+1;
     }
 }

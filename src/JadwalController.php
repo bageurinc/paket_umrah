@@ -150,7 +150,6 @@ class JadwalController extends Controller
                 $upload                     = UploadProcessor::go($request->file('gambar'),'umrah');
                 $paket->gambar_itinerary    = $upload;
             }
-
             $paket->save();
             return response(['status' => true ,'text'    => 'has input'], 200); 
         }
