@@ -20,7 +20,7 @@ class jadwal extends Model
     public function getItineraryAttribute()
     {
             if(@$this->gambar_itinerary != null){
-                return url('umrah/'.@$this->gambar_itinerary);
+                return url('storage/umrah/'.@$this->gambar_itinerary);
             }
     }   
     public function getDataComponentAttribute()
