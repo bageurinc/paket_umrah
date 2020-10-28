@@ -26,6 +26,7 @@ class PaketUmrah extends Migration
             $table->id();
             $table->foreignId('umrah_paket_id');
             $table->string('nama_jadwal');
+            $table->string('mata_uang', 10);
             $table->text('nama_jadwal_seo');
             $table->date('keberangkatan');
             $table->date('kepulangan');

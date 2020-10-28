@@ -14,7 +14,7 @@ class Paket extends Model
     {
             return AvatarProcessor::get($this->nama,@$this->gambar);
     }   
-    public function scopeDatatable($query,$request,$page=12)
+    public function scopeDatatable($query,$request,$page=7)
     {
           $search       = ["nama"];
           $searchqry    = '';
