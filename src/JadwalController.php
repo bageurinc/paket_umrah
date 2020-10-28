@@ -133,6 +133,7 @@ class JadwalController extends Controller
             $component['madinah']            = $request->madinah;
             $component['transportasi']       = $request->transportasi;
             $component['jeddah']             = $request->jeddah;
+            $component['kustom']             = $request->kustom;
             $component['departure']          = $request->departure;
             $component['arrival']            = $request->arrival;
 
