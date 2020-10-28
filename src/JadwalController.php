@@ -22,6 +22,7 @@ class JadwalController extends Controller
         $rules    	= [
                         'paket_id'		     		=> 'required',
                         'nama_jadwal'               => 'required|unique:bgr_umrah_jadwal|min:3',
+                        'mata_uang'                 => 'required',
                         'keberangkatan'             => 'required|date',
                         'kepulangan'                => 'required|date',
                         'double'                    => 'required|numeric',
@@ -56,6 +57,7 @@ class JadwalController extends Controller
             $paket                           = new jadwal;
             $paket->umrah_paket_id           = $request->paket_id;
             $paket->nama_jadwal              = $request->nama_jadwal;
+            $paket->mata_uang               = $request->mata_uang;
             $paket->nama_jadwal_seo          = Str::slug($request->nama_jadwal);
             $paket->keberangkatan            = $request->keberangkatan;
             $paket->kepulangan               = $request->kepulangan;
@@ -104,6 +106,7 @@ class JadwalController extends Controller
         $rules      = [
                         'paket_id'                  => 'required',
                         'nama_jadwal'               => 'required|unique:bgr_umrah_jadwal,nama_jadwal,'.$id.',id|min:3',
+                        'mata_uang'                 => 'required',
                         'keberangkatan'             => 'required|date',
                         'kepulangan'                => 'required|date',
                         'double'                    => 'required',
@@ -136,6 +139,7 @@ class JadwalController extends Controller
             $paket                           = jadwal::findOrFail($id);
             $paket->umrah_paket_id           = $request->paket_id;
             $paket->nama_jadwal              = $request->nama_jadwal;
+            $paket->mata_uang               = $request->mata_uang;
             $paket->nama_jadwal_seo          = Str::slug($request->nama_jadwal);
             $paket->keberangkatan            = $request->keberangkatan;
             $paket->kepulangan               = $request->kepulangan;
