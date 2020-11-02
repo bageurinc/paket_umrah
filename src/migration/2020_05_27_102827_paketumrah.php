@@ -17,6 +17,7 @@ class PaketUmrah extends Migration
             $table->id();
             $table->string('nama');
             $table->text('nama_seo');
+            $table->string('tipe_paket');
             $table->string('gambar')->nullable();
             $table->string('status')->default('aktif');
             $table->timestamps();

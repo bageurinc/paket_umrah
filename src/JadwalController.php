@@ -30,7 +30,6 @@ class JadwalController extends Controller
                         'makkah'                    => 'required',
                         'madinah'                   => 'required',
                         'transportasi'              => 'required',
-                        'jeddah'                    => 'required',
                         'departure'                 => 'required',
                         'arrival'                   => 'required',
                     ];

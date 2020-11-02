@@ -63,8 +63,16 @@ class jadwal extends Model
     }   
     public function scopeDatatable($query,$request,$page=12)
     {
-          $search       = ["nama_jadwal"];
-          $searchqry    = '';
+        $search       = ["nama_jadwal"];
+        $searchqry    = '';
+
+        if(!empty($request->t)){
+            $query->where('keberangkatan',$request->t);
+        }
+
+        if(!empty($request->p)){
+            $query->where('umrah_paket_id',$request->p);
+        }
 
         $searchqry = "(";
         foreach ($search as $key => $value) {
