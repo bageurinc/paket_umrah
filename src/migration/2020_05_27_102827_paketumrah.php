@@ -57,7 +57,17 @@ class PaketUmrah extends Migration
             $table->string('gambar')->nullable();
             $table->string('status')->default('aktif');
             $table->timestamps();
-        });   
+        });
+
+        Schema::create('bgr_umrah_hotel', function (Blueprint $table) {
+            $table->id();
+            $table->string('nama_hotel');
+            $table->text('nama_hotel_seo');
+            $table->string('domisili_hotel');
+            $table->string('gambar')->nullable();
+            $table->string('status')->default('aktif');
+            $table->timestamps();
+        });     
     }
 
     /**
