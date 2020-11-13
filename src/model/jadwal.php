@@ -10,7 +10,7 @@ use Bageur\PaketUmrah\Processors\TglProcessor;
 class jadwal extends Model
 {
     protected $table   = 'bgr_umrah_jadwal';
-    protected $appends = ['itinerary','data_component','data_include','idr_double','idr_triple','idr_quad','avatar','indo_keberangkatan','indo_kepulangan'];
+    protected $appends = ['itinerary','data_component','data_include','data_exclude','idr_double','idr_triple','idr_quad','avatar','indo_keberangkatan','indo_kepulangan'];
     protected $hidden = ['gambar_itinerary','component','include','cover','created_at','updated_at'];
 
     public function getAvatarAttribute()
@@ -32,6 +32,14 @@ class jadwal extends Model
             // return json_decode($this->include);
         $data = [];
         foreach (json_decode($this->include,true) as $key) {
+            $data[] = ['content' => $key];
+        }
+        return $data;
+    }
+    public function getDataExcludeAttribute()
+    {
+        $data = [];
+        foreach (json_decode($this->exclude,true) as $key) {
             $data[] = ['content' => $key];
         }
         return $data;

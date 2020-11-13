@@ -66,6 +66,8 @@ class JadwalController extends Controller
             $paket->triple                   = $request->triple;
             $paket->quad                     = $request->quad;
             $paket->include                  = json_encode($request->include);
+            $paket->exclude                  = json_encode($request->exclude);
+
 
             if($request->file('gambar') != null){
                 $upload                     = UploadProcessor::go($request->file('gambar'),'umrah');
@@ -149,6 +151,7 @@ class JadwalController extends Controller
             $paket->triple                   = $request->triple;
             $paket->quad                     = $request->quad;
             $paket->include                  = json_encode($request->include);
+            $paket->exclude                  = json_encode($request->exclude);
 
             if($request->file('gambar') != null){
                 $upload                     = UploadProcessor::go($request->file('gambar'),'umrah');
