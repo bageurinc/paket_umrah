@@ -75,7 +75,15 @@ class PaketUmrah extends Migration
             $table->string('tipe_transportasi');
             $table->string('status')->default('aktif');
             $table->timestamps();
-        });      
+        });
+        Schema::create('bgr_umrah_maskapai', function (Blueprint $table) {
+            $table->id();
+            $table->string('nama_maskapai');
+            $table->string('nama_maskapai_seo');
+            $table->string('tipe_maskapai');
+            $table->string('status')->default('aktif');
+            $table->timestamps();
+        });            
     }
 
     /**
