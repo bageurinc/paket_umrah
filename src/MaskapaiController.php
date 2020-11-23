@@ -71,7 +71,7 @@ class MaskapaiController extends Controller
             $errors = $validator->errors();
             return response(['status' => false ,'error'    =>  $errors->all()], 200);
         }else{
-            $maskapai                             = maskapai::findOrFail($id);
+            $maskapai                         = maskapai::findOrFail($id);
             $maskapai->nama_maskapai          = $request->nama_maskapai;
             $maskapai->nama_maskapai_seo      = Str::slug($request->nama_maskapai);
             $maskapai->tipe_maskapai          = $request->tipe_maskapai;

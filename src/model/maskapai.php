@@ -3,17 +3,11 @@
 namespace Bageur\PaketUmrah\Model;
 
 use Illuminate\Database\Eloquent\Model;
-use Bageur\PaketUmrah\Processors\AvatarProcessor;
 
 class maskapai extends Model
 {
     protected $table = 'bgr_umrah_maskapai';
-    protected $appends = ['avatar'];
-
-    public function getAvatarAttribute()
-    {
-            return AvatarProcessor::get($this->nama_maskapai,@$this->gambar);
-    }   
+   
     public function scopeDatatable($query,$request,$page=7)
     {
           $search       = ["nama_maskapai"];

@@ -21,10 +21,7 @@ class HotelController extends Controller
         $rules    	= [
                         'nama_hotel'		        => 'required',
                         'domisili_hotel'            => 'required',
-                    ];
-        if($request->file('gambar') != null){
-            $rules['gambar'] = 'mimes:jpg,jpeg,png|max:1000';
-        }              
+                    ];             
         $messages 	= [];
         $attributes = [];
 
@@ -37,10 +34,11 @@ class HotelController extends Controller
             $hotel->nama_hotel	              = $request->nama_hotel;
             $hotel->nama_hotel_seo	          = Str::slug($request->nama_hotel);
             $hotel->domisili_hotel            = $request->domisili_hotel;
-            if($request->file('gambar') != null){
-                $upload                       = UploadProcessor::go($request->file('gambar'),'umrah');
-                $hotel->gambar                = $upload;
-            }
+            if($request->file != null){
+                $upload                       = UploadProcessor::go($request->file,'hotel');
+	           	$hotel->gambar	              = $upload['up'];
+                $hotel->gambar_path           = $upload['path'];
+       		}
             $hotel->save();
             return response(['status' => true ,'text'    => 'has input'], 200); 
         }
@@ -69,11 +67,7 @@ class HotelController extends Controller
         $rules      = [
                         'nama_hotel'                    => 'required',
                         'domisili_hotel'                => 'required',
-                      ];
-
-      if($request->file('gambar') != null){
-            $rules['gambar'] = 'mimes:jpg,jpeg,png|max:1000';
-        }              
+                      ];       
         $messages   = [];
         $attributes = [];
 
@@ -86,10 +80,11 @@ class HotelController extends Controller
             $hotel->nama_hotel              = $request->nama_hotel;
             $hotel->nama_hotel_seo          = Str::slug($request->nama_hotel);
             $hotel->domisili_hotel          = $request->domisili_hotel;
-            if($request->file('gambar') != null){
-                $upload                     = UploadProcessor::go($request->file('gambar'),'umrah');
-                $hotel->gambar              = $upload;
-            }
+            if($request->file != null){
+                $upload                     = UploadProcessor::go($request->file,'hotel');
+	           	$hotel->gambar	            = $upload['up'];
+                $hotel->gambar_path         = $upload['path'];
+       		}
             $hotel->save();
             return response(['status' => true ,'text'    => 'has input'], 200); 
         }

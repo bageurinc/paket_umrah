@@ -35,12 +35,12 @@ class JadwalfotoController extends Controller
             $errors = $validator->errors();
             return response(['status' => false ,'error'    =>  $errors->all()], 200);
         }else{
-            $paket              			= new jadwalgalery;
+            $paket              	  = new jadwalgalery;
             $paket->umrah_jadwal_id	  = $request->jadwal;
             $paket->nama              = $request->nama;
             $paket->save();
 
-           $gambar = $request->file('gambar');
+           $gambar = $request->file;
            for ($i=0; $i < count($gambar); $i++) { 
               $upload                   = UploadProcessor::go($gambar[$i],'umrah');
               $paketfoto                = new jadwalgalery;
@@ -92,10 +92,11 @@ class JadwalfotoController extends Controller
             $paket->nama                    = $request->nama;
             $paket->nama_seo                = Str::slug($request->nama);
             $paket->tipe_paket              = $request->tipe_paket;
-            if($request->file('gambar') != null){
-                $upload                     = UploadProcessor::go($request->file('gambar'),'umrah');
-                $paket->gambar            = $upload;
-            }
+            if($request->file != null){
+                $upload                     = UploadProcessor::go($request->file,'umrah');
+	           	$paket->gambar	            = $upload['up'];
+                $paket->gambar_path         = $upload['path'];
+       		}
             $paket->save();
             return response(['status' => true ,'text'    => 'has input'], 200); 
         }
