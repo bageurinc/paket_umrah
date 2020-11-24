@@ -6,5 +6,6 @@ Route::name('bageur.')->group(function () {
 		Route::apiResource('umrah-jadwal-gallery', 'bageur\PaketUmrah\JadwalfotoController');
 		Route::apiResource('umrah-hotel', 'bageur\PaketUmrah\HotelController');
 		Route::apiResource('umrah-transportasi', 'bageur\PaketUmrah\TransportasiController');
+		Route::apiResource('umrah-maskapai', 'bageur\PaketUmrah\MaskapaiController');
 	});
 });
