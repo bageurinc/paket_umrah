@@ -12,7 +12,7 @@ class Paket extends Model
 
     public function getAvatarAttribute()
     {
-            return AvatarProcessor::get($this->nama,@$this->gambar);
+        return AvatarProcessor::get($this->nama,$this->gambar,$this->gambar_path);
     }   
     public function scopeDatatable($query,$request,$page=7)
     {

@@ -12,7 +12,7 @@ class hotel extends Model
 
     public function getAvatarAttribute()
     {
-            return AvatarProcessor::get($this->nama_hotel,@$this->gambar);
+        return AvatarProcessor::get($this->nama_hotel,$this->gambar,$this->gambar_path);
     }   
     public function scopeDatatable($query,$request,$page=7)
     {

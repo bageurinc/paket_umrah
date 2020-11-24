@@ -19,6 +19,7 @@ class JadwalController extends Controller
 
     public function store(Request $request)
     {
+        // return $request;
         $rules    	= [
                         'paket_id'		     		=> 'required',
                         'nama_jadwal'               => 'required|unique:bgr_umrah_jadwal|min:3',
@@ -33,9 +34,9 @@ class JadwalController extends Controller
                         'departure'                 => 'required',
                         'arrival'                   => 'required',
                     ];
-        if($request->file('gambar') != null){
-            $rules['gambar'] = 'mimes:jpg,jpeg,png,svg|max:1000';
-        }              
+        // if($request->file('gambar') != null){
+        //     $rules['gambar'] = 'mimes:jpg,jpeg,png,svg|max:1000';
+        // }              
         $messages 	= [];
         $attributes = [];
 
@@ -45,7 +46,7 @@ class JadwalController extends Controller
             return response(['status' => false ,'error'    =>  $errors->all()], 200);
         }else{
 
-
+            $component['deskripsi']          = $request->deskripsi;
             $component['makkah']             = $request->makkah;
             $component['madinah']            = $request->madinah;
             $component['transportasi']       = $request->transportasi;
@@ -65,14 +66,16 @@ class JadwalController extends Controller
             $paket->double                   = $request->double;
             $paket->triple                   = $request->triple;
             $paket->quad                     = $request->quad;
-            $paket->include                  = json_encode($request->include);
-            $paket->exclude                  = json_encode($request->exclude);
+            $paket->include                  = json_encode($request->includecomponent);
+            $paket->exclude                  = json_encode($request->excludecomponent);
+            $paket->itinerary                = json_encode($request->itinerarycomponent, true);
+            $paket->syarat                   = $request->syarat;
 
 
-            if($request->file('gambar') != null){
-                $upload                     = UploadProcessor::go($request->file('gambar'),'umrah');
-                $paket->gambar_itinerary    = $upload;
-            }
+            // if($request->file('gambar') != null){
+            //     $upload                     = UploadProcessor::go($request->file('gambar'),'umrah');
+            //     $paket->gambar_itinerary    = $upload;
+            // }
 
             $paket->save();
             return response(['status' => true ,'text'    => 'has input'], 200); 
@@ -91,7 +94,6 @@ class JadwalController extends Controller
         foreach($jadwal->data_component as $key => $value) {
             $jadwal->{$key} = $value;
         }
-        unset($jadwal->data_component);
         return $jadwal;
     }   
 
@@ -119,9 +121,9 @@ class JadwalController extends Controller
                         'departure'                 => 'required',
                         'arrival'                   => 'required',
                     ];
-        if($request->file('gambar') != null){
-            $rules['gambar'] = 'mimes:jpg,jpeg,png,svg|max:1000';
-        }              
+        // if($request->file('gambar') != null){
+        //     $rules['gambar'] = 'mimes:jpg,jpeg,png,svg|max:1000';
+        // }              
         $messages   = [];
         $attributes = [];
 
@@ -130,6 +132,7 @@ class JadwalController extends Controller
             $errors = $validator->errors();
             return response(['status' => false ,'error'    =>  $errors->all()], 200);
         }else{
+            $component['deskripsi']          = $request->deskripsi;
             $component['makkah']             = $request->makkah;
             $component['madinah']            = $request->madinah;
             $component['transportasi']       = $request->transportasi;
@@ -150,13 +153,16 @@ class JadwalController extends Controller
             $paket->double                   = $request->double;
             $paket->triple                   = $request->triple;
             $paket->quad                     = $request->quad;
-            $paket->include                  = json_encode($request->include);
-            $paket->exclude                  = json_encode($request->exclude);
+            $paket->include                  = json_encode($request->includecomponent);
+            $paket->exclude                  = json_encode($request->excludecomponent);
+            $paket->itinerary                = json_encode($request->itinerarycomponent, true);
+            $paket->syarat                   = $request->syarat;
 
-            if($request->file('gambar') != null){
-                $upload                     = UploadProcessor::go($request->file('gambar'),'umrah');
-                $paket->gambar_itinerary    = $upload;
-            }
+
+            // if($request->file('gambar') != null){
+            //     $upload                     = UploadProcessor::go($request->file('gambar'),'umrah');
+            //     $paket->gambar_itinerary    = $upload;
+            // }
             $paket->save();
             return response(['status' => true ,'text'    => 'has input'], 200); 
         }

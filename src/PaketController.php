@@ -21,10 +21,7 @@ class PaketController extends Controller
         $rules    	= [
                         'nama'		     		=> 'required|unique:bgr_umrah_paket|min:3',
                         'tipe_paket'            => 'required',
-                    ];
-        if($request->file('gambar') != null){
-            $rules['gambar'] = 'mimes:jpg,jpeg,png|max:1000';
-        }              
+                    ];             
         $messages 	= [];
         $attributes = [];
 
@@ -37,10 +34,11 @@ class PaketController extends Controller
             $paket->nama	                = $request->nama;
             $paket->nama_seo	       		= Str::slug($request->nama);
             $paket->tipe_paket              = $request->tipe_paket;
-            if($request->file('gambar') != null){
-                $upload                     = UploadProcessor::go($request->file('gambar'),'umrah');
-                $paket->gambar            = $upload;
-            }
+            if($request->file != null){
+                $upload                       = UploadProcessor::go($request->file,'paket');
+	           	$paket->gambar	              = $upload['up'];
+                $paket->gambar_path           = $upload['path'];
+       		}
             $paket->save();
             return response(['status' => true ,'text'    => 'has input'], 200); 
         }
@@ -69,11 +67,7 @@ class PaketController extends Controller
         $rules      = [
                         'nama'                  => 'required|unique:bgr_umrah_paket,nama,'.$id.',id|min:2',
                         'tipe_paket'            => 'required',
-                      ];
-
-      if($request->file('gambar') != null){
-            $rules['gambar'] = 'mimes:jpg,jpeg,png|max:1000';
-        }              
+                      ];          
         $messages   = [];
         $attributes = [];
 
@@ -86,10 +80,11 @@ class PaketController extends Controller
             $paket->nama                    = $request->nama;
             $paket->nama_seo                = Str::slug($request->nama);
             $paket->tipe_paket              = $request->tipe_paket;
-            if($request->file('gambar') != null){
-                $upload                     = UploadProcessor::go($request->file('gambar'),'umrah');
-                $paket->gambar            = $upload;
-            }
+            if($request->file != null){
+                $upload                       = UploadProcessor::go($request->file,'paket');
+	           	$paket->gambar	              = $upload['up'];
+                $paket->gambar_path           = $upload['path'];
+       		}
             $paket->save();
             return response(['status' => true ,'text'    => 'has input'], 200); 
         }
