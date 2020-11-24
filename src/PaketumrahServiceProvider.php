@@ -18,6 +18,7 @@ class PaketumrahServiceProvider extends ServiceProvider
         $this->app->make('Bageur\PaketUmrah\JadwalController');
         $this->app->make('Bageur\PaketUmrah\JadwalfotoController');
         $this->app->make('Bageur\PaketUmrah\HotelController');
+        $this->app->make('Bageur\PaketUmrah\TransportasiController');
         // $this->app->make('Bageur\PaketUmrah\KategoriController');
     }
 
