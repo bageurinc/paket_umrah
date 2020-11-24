@@ -34,6 +34,7 @@ class PaketUmrah extends Migration
             $table->string('durasi',3);
             $table->json('component');
             $table->json('include')->nullable();
+            $table->json('exclude')->nullable();
 
             $table->double('double');
             $table->double('triple');
