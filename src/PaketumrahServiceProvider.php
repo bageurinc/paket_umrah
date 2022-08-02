@@ -4,7 +4,7 @@ namespace Bageur\PaketUmrah;
 
 use Illuminate\Support\ServiceProvider;
 
-class PaketumrahServiceProvider extends ServiceProvider
+class PaketUmrahServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
