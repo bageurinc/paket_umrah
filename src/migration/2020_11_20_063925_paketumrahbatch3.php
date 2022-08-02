@@ -14,10 +14,10 @@ class PaketUmrahBatch3 extends Migration
     public function up()
     {
         Schema::table('bgr_umrah_hotel', function (Blueprint $table) {
-            $table->string('gambar_path')->nullable()->after('gambar');
+            $table->string('gambar_path')->nullable();
         });
         Schema::table('bgr_umrah_paket', function (Blueprint $table) {
-            $table->string('gambar_path')->nullable()->after('gambar');
+            $table->string('gambar_path')->nullable();
         });
     }
 

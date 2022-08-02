@@ -14,8 +14,8 @@ class PaketUmrahBatch2 extends Migration
     public function up()
     {
         Schema::table('bgr_umrah_jadwal', function (Blueprint $table) {
-            $table->json('itinerary')->nullable()->after('exclude');
-            $table->text('syarat')->nullable()->after('itinerary');
+            $table->json('itinerary')->nullable();
+            $table->text('syarat')->nullable();
         });
     }
 
